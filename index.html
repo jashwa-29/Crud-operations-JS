@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crud Operations</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+         .out-line-box input{
+            width: 200px;
+            height: 30px;
+            border-radius:5px ;
+
+        }
+        button{
+            padding: 10px 30px;
+            border: none;
+            background-color: black;
+            color: white;
+            border-radius: 7px;
+            margin-left: 5px;
+        }
+        #savingdata{
+            padding-top: 20px;
+        }
+        .out-line-box{
+            width: 250px;
+            height: 270px;
+            border: 2px solid gray;
+            border-radius: 5px;
+            text-align: center;
+            margin-right: auto;
+            margin-left: auto;
+            padding-top: 35px;
+            margin-top: 20px;
+        }
+       .main{
+        margin-top: 30px;
+       }
+       h1{
+        font-family: Arial, Helvetica, sans-serif;
+       }
+       input{
+        width: 200px;
+        height: 30px;
+        border-radius: 5px;
+        margin-left: 5px;
+       }
+    </style>
+</head>
+<body>
+     <div class="main">
+        <h1>Crud operation</h1>
+        <div class="out-line-box">
+            <input type="text" placeholder="Enter your name" id="firstname" required><br><br>
+            <input type="number" placeholder="Enter your phone number" id="phonenumber" required><br><br>
+            <input type="text" placeholder="Enter your address" id="address" required><br><br>
+            <input type="date" placeholder="Enter the date" id="date" required><br><br>
+            <button type="submit" id="submitbutton" class="submit-btn">Submit</button><br><br>
+        </div>
+    </div> 
+
+
+    <div id="savingdata"></div>
+
+    <script>
+        let firstnamevariablename = document.getElementById("firstname");
+        let phonevariablename = document.getElementById("phonenumber");
+        let addressvariablename = document.getElementById("address");
+        let datevariablename = document.getElementById("date");
+        let submitbuttonvariblename = document.getElementById("submitbutton");
+        let savingdatavariablename = document.getElementById("savingdata");
+
+        submitbuttonvariblename.addEventListener("click", function crudoperationprogram() {
+            console.log("click time to executed", firstnamevariablename.value);
+            let creatingnewdiv = document.createElement("div");
+            savingdatavariablename.appendChild(creatingnewdiv);
+
+            let namenewdivcreating = document.createElement("input");
+            namenewdivcreating.value = firstnamevariablename.value;
+            namenewdivcreating.setAttribute("readonly", "readonly");
+            creatingnewdiv.appendChild(namenewdivcreating);
+
+            let phoneNewDiv = document.createElement("input");
+            phoneNewDiv.value = phonevariablename.value;
+            phoneNewDiv.setAttribute("readonly", "readonly");
+            creatingnewdiv.appendChild(phoneNewDiv);
+
+            let addressNewDiv = document.createElement("input");
+            addressNewDiv.value = addressvariablename.value;
+            addressNewDiv.setAttribute("readonly", "readonly");
+            creatingnewdiv.appendChild(addressNewDiv);
+
+            let dateNewDiv = document.createElement("input");
+            dateNewDiv.value = datevariablename.value;
+            dateNewDiv.setAttribute("readonly", "readonly");
+            creatingnewdiv.appendChild(dateNewDiv);
+
+            let editbutton = document.createElement("button");
+            editbutton.innerHTML = "Edit";
+            creatingnewdiv.appendChild(editbutton);
+
+            editbutton.addEventListener("click", () => {
+                namenewdivcreating.removeAttribute("readonly", "readonly");
+                phoneNewDiv.removeAttribute("readonly", "readonly");
+                addressNewDiv.removeAttribute("readonly", "readonly");
+                dateNewDiv.removeAttribute("readonly", "readonly");
+            });
+
+            let savebutton = document.createElement("button");
+            savebutton.innerHTML = "Save";
+            creatingnewdiv.appendChild(savebutton);
+
+            savebutton.addEventListener("click", () => {
+                namenewdivcreating.setAttribute("readonly", "readonly");
+                phoneNewDiv.setAttribute("readonly", "readonly");
+                addressNewDiv.setAttribute("readonly", "readonly");
+                dateNewDiv.setAttribute("readonly", "readonly");
+            });
+
+            let deletebutton = document.createElement("button");
+            deletebutton.innerHTML = "Delete";
+            creatingnewdiv.appendChild(deletebutton);
+
+            deletebutton.addEventListener("click", () => {
+                savingdatavariablename.removeChild(creatingnewdiv);
+            });
+        });
+
+    </script>
+</body>
+</html>
